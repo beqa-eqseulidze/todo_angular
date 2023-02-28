@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="d-flex justify-content-between mt-5 mb-3">
+    <div class="title">our-to-do</div>
+    <button routerLink="/todo" class="btn btn-primary">add</button>
+  </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">title</th>
+            <th scope="col">status</th>
+            <th scope="col">responsibel person</th>
+            <th scope="col">create date</th>
+            <th scope="col">actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let todo of todos">
+              <tr [ngClass]="{'complited': todo.status=='complited', 'pending':todo.status=='pending'}">
+              <td>{{todo.id}}</td>
+              <td>{{todo.title}}</td>
+              <td>{{todo.status}}</td>
+              <td>{{todo?.responsiblePerson?.fullName}}</td>
+              <td>{{todo.createdAt | date:'dd.MM.yyyy'}}</td>
+              <td>                
+                <button class="btn btn-success me-2" routerLink="/todo/edit/{{todo.id}}">edit</button>
+                <button class="btn btn-primary me-2"  (click)="statChange(todo.id,todo.status)">status change</button>
+                <button class="btn btn-danger" (click)="delete(todo.id)" >delete</button>
+              </td>
+            </tr>          
+            </ng-container>
+        </tbody>
+      </table>
+</div>

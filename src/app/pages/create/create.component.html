@@ -1,0 +1,35 @@
+<form [formGroup]="form" class="w-50 m-auto mt-5" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="title" class="form-label"  >title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" >
+    </div>
+    <div *ngIf="form.get('title')?.invalid&& form.get('title')?.touched" style="color:red">
+      title is required
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">description</label>
+      <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+    </div>
+    <div *ngIf="form.get('description')?.invalid&& form.get('description')?.touched" style="color:red">
+      description is required
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="exampleCheck1">dueDate</label>
+      <input type="date" class="form-control" id="dueDate" formControlName="dueDate">
+    </div>
+    <div *ngIf="form.get('dueDate')?.invalid&& form.get('dueDate')?.touched" style="color:red">
+      dueDate is required
+    </div>
+    <div class="mb-3">
+        <label for="responsiblePersonId" class="form-label">responsiblePerson</label>
+        <select class="form-select" id="responsiblePersonId" formControlName="responsiblePersonId">
+            <ng-container *ngFor="let person of persons |async">  <!-- ობზერვებლის პირდაპირ HTML ში გამოყენება-->
+                <option value={{person.id}}>{{person.fullName}}</option>
+            </ng-container>       
+          </select>    
+          <div *ngIf="form.get('responsiblePerson')?.invalid&& form.get('responsiblePerson')?.touched" style="color:red">
+            responsiblePerson is required
+          </div>
+    </div>
+    <button type="submit" class="btn btn-primary">{{!todoId?'Submit':'updata'}}</button>
+  </form>
