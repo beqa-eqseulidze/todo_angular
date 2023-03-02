@@ -46,6 +46,8 @@ export class TodoService {
   updateTodo(id:number|string,todo:ITodo):Observable<boolean>{    
     let todos=this.todos;
     let index=todos.findIndex(todo =>todo.id === id);
+   
+    todos[index].responsiblePerson?.id!==todo.responsiblePersonId? this.personService.getPerson(todo.responsiblePersonId).subscribe((person)=>todos[index].responsiblePerson=person):null;
     todos[index] ={...todos[index],... todo};
     this.storageService.set('todos', todos)
     return of(true)

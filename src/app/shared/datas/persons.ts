@@ -14,7 +14,7 @@ export const persons:IPerson[]=[
         address: 'megomroba str. 26/112'
     },
     {   id:'3',
-        fullName: 'person 2',
+        fullName: 'person 3',
         email: 'person3@gmail.com',
         phone: 12346678,
         address: 'megomroba str. 26/112'

@@ -8,6 +8,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">title</th>
+            <th scope="col">description</th>
             <th scope="col">status</th>
             <th scope="col">responsibel person</th>
             <th scope="col">create date</th>
@@ -19,6 +20,7 @@
               <tr [ngClass]="{'complited': todo.status=='complited', 'pending':todo.status=='pending'}">
               <td>{{todo.id}}</td>
               <td>{{todo.title}}</td>
+              <td>{{todo.description}}</td>
               <td>{{todo.status}}</td>
               <td>{{todo?.responsiblePerson?.fullName}}</td>
               <td>{{todo.createdAt | date:'dd.MM.yyyy'}}</td>

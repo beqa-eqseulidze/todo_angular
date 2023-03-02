@@ -8,13 +8,14 @@ import { IPerson } from '../interfaces/person.interface';
 })
 export class PersonService {
   constructor() { }
+  persons:IPerson[]=persons
 
   getPersons(): Observable<IPerson[]> {
-    return of(persons)
+    return of(this.persons)
   }
 
   getPerson(id:string|number): Observable<IPerson|undefined> {
-    return of(persons.find(person => person.id === id))
+    return of(this.persons.find(person => person.id === id))
   }
 
 }

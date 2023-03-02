@@ -60,8 +60,7 @@ export class CreateComponent implements OnDestroy, OnInit{
           else return;
     }else{     
         this.subscription=this.todoService.updateTodo(this.todoId,this.form.value).subscribe((data) =>{
-          console.log(data);          
-          this.router.navigate([''])
+        this.router.navigate([''])
         })
     }      
 

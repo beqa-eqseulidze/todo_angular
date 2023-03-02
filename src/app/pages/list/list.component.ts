@@ -11,7 +11,9 @@ import { TodoStatus } from 'src/app/common/types/todo-status';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
-  subscriptions: Subscription|undefined 
+  
+  subscriptions: Subscription|undefined ;
+
   todos:ITodo[]=[];
 
   constructor(
@@ -23,8 +25,8 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   getTodos(){
-    this.subscriptions=this.todoService.getTodos().subscribe((item)=>{
-      this.todos =item;
+    this.subscriptions=this.todoService.getTodos().subscribe((todo)=>{
+      this.todos =todo;    
     })
    
   }
